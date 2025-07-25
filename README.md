@@ -28,21 +28,43 @@ The <i>"ExtendUniverse"</i> function extends the forest grid to include periodic
 
 
 Then, the burning forest is copied into the empty forest such that its boundaries are bounded by empty rows and columns to the top and bottom, to the right and left.
+
+![extenduniverse2.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/extenduniverse2.png)
+
+
 Then the periodic boundary conditions were further implemented by copying cell values of the last row into the first row and copying the second row into the last row. The same thing also applies to the columns as well to help us simulate an infinite lattice similar to the topology of a torus.
 
+![extenduniverse3.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/extenduniverse3.png)
+
+
 The "FireSpread" function simulates the spread of fire by updating the state of each cell according to certain transition rules (Von Neuman Neighbourhood). If a cell is empty or has a non-burning tree, there is a chance that it will catch fire based on the "probBurning" parameter. If a cell is a burning tree, it will become empty. If a non-burning tree is adjacent to a burning tree, there is a chance that it will catch fire based on the "probLightning" parameter.
+
+![vonnneumannalgorithm.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/vonnneumannalgorithm.png)
+
 The screenshot of the algorithm above illustrates the Von Neumann neighborhood principle, which was used as the transition rule for the spread of the forest fire.
 
 The "simulate" function uses the "FireSpread" function to simulate the spread of fire in the forest. This spread of fire is carried out sequentially.
 
+![simulatemethod.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/simulatemethod.png)
+
+
 The "visualise" function contains implementation to visualise the animated simulated model using the Python library called Matplotlib.
 
-Parallel Implementation
+![visualizemethod.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/visualizemethod.png)
+
+## Parallel Implementation
 The Parallel implementation uses the Moore Neighbourhood algorithm while the sequential implementation uses the Von Neumann algorithm to determine its transition rule.
+
 The Parallelization of the implementation is done by adopting Numba and pool multiprocessing; Multiprocessing has some overhead when it is compared to Numba as Numba uses multithreading. The comparison is quite complicated as it sometimes requires tradeoffs when deciding the parallelization method to adopt. The overhead of multiprocessing sometimes makes it the best method especially when complex computation is done on a computer with several processors.
+
 As shown below, the Numba parallelisation technique was used when looping through to initialise or populate the forest grid (universe).
 NB: The attribute "nopython=True" wasn't used due to the deprecated version of Numba.
+
+![initializeforest.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/initializeforest.png)
+
 The other part of the implementation where parallelisation was applied was on the FireSpread based on the Moore Neighbourhood Algorithm. This parallelisation technique was achieved by applying multiprocessing against the fire spread.
+
+![simulatemethod2.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/simulatemethod2.png)
 
 ## Results and evaluation
 ![ResultEvaluation.png](https://github.com/AtolagbeMuiz/Cellular-Automaton-Forest-Fire-Simulation/blob/main/ReportImages/ResultEvaluation.png)
