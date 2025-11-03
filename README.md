@@ -82,6 +82,7 @@ A frame from the animated simulation model.
 ## Conclusion
 The Implementation has been able to showcase the runtime complexity of both sequential and parallel algorithms and how parallelisation was achieved using both Numba and Multiprocessing pool to reduce the runtime. Although this algorithm still requires some form of refactoring and optimisation such that each implemented Neighbourhood algorithm can be utilised by any of both parallel and sequential implementations.
 
+
 ## References
 - Numba. (n.d.). Deprecation - Numba documentation. Retrieved April 15, 2023, from https://numba.readthedocs.io/en/stable/reference/deprecation.html#recommendations
 - Numba. (n.d.). njit.parallel=True or python.multiprocessing for speed up? Retrieved April 15, 2023, from https://numba.discourse.group/t/njit-parallel-true-or-python-multiprocessessing-for-speed-up/130/2
